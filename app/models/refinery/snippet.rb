@@ -6,6 +6,10 @@ module Refinery
     validates :title, :presence => true, :uniqueness => true
 
     translates :body
+    class Translation
+      attr_accessible :locale
+    end
+
 
     has_many :snippet_page_parts, :dependent => :destroy
     has_many :page_parts, :through => :snippet_page_parts
