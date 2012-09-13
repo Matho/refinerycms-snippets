@@ -25,8 +25,8 @@ cs:
           inactive: Neaktivní
           add_after_body: Přidat za obsah
           add_before_body: Přidat před obsah
-          after_body: Před obsah
-          before_body: Za obsah
+          after_body: Za obsah
+          before_body: Před obsah
         snippets_list_item:
           remove: Odstranit
           edit: Upravit
