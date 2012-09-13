@@ -1,0 +1,43 @@
+sk:
+  refinery:
+    plugins:
+      refinery_snippets:
+        title: Útržky
+    admin:
+      snippets:
+        actions:
+          create_new: Pridať nový útržok
+          reorder: Zmeniť poradie útržkov
+          reorder_done: Uložiť usporiadanie
+        records:
+          title: Útržky
+          sorry_no_results: Nenašli sa žiadne útržky pre zadané kritériá.
+          no_items_yet: Zatiaľ neboli pridané žiadne útržky. Klikni na "Pridať nový útržok" pre pridanie.
+        snippet:
+          view_live_html: Zobraziť útržok <br/><em>(otvorí sa v novom okne)</em>
+          edit: Upraviť tento útržok
+          delete: Zmazať tento útržok
+      pages:
+        tabs:
+          snippets_content:
+            please_save_page_before: Pred pridaním útržkov prosím ulož túto stránku.
+          snippets_field:
+            active: Aktívny
+            inactive: Neaktívny
+            add_after_body: Pridať za obsah
+            add_before_body: Pridať pred obsah
+            after_body: Za obsahom
+            before_body: Pred obsahom
+          snippets_list_item:
+            remove: Zmazať
+            edit: Upraviť
+    snippets:
+      show:
+        other: Ďalšie útržky
+  activerecord:
+    models:
+      refinery/snippet: útržok
+    attributes:
+      refinery/snippet:
+        title: Názov
+
