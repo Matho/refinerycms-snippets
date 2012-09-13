@@ -2,6 +2,7 @@ module Refinery
   class SnippetPagePart < ActiveRecord::Base
 
     set_table_name 'snippets_page_parts'
+    attr_accessible :page_part, :snippet, :before_body
 
     delegate :title, :to => :snippet
 
