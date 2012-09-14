@@ -4,10 +4,7 @@
           :include_object_name => true
         } %>
   
-  <%= render :partial => "locale_picker",
-             :locals => {
-               :current_locale => Thread.current[:globalize_locale]
-             } if defined?(::Refinery::I18n) %>
+  <%= render '/refinery/admin/pages/locale_picker', :current_locale => Globalize.locale if Refinery.i18n_enabled? %>
   
   <div class='field'>
     <%= f.label :title -%>
