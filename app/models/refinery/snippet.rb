@@ -9,7 +9,7 @@ module Refinery
     class Translation
       attr_accessible :locale
     end
-    attr_accessible :title, :body
+    attr_accessible :title, :body, :position
 
 
     has_many :snippet_page_parts, :dependent => :destroy
