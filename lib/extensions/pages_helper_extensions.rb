@@ -14,17 +14,19 @@ module Extensions
         # attached snippets.
         def content_of(page, part_title)
           part = page.parts.detect do |part|
-            part.title.present? and #protecting against the problem that occurs when have nil title
+              part.title.present? and #protecting against the problem that occurs when have nil title
               part.title == part_title.to_s or
               part.title.downcase.gsub(" ", "_") == part_title.to_s.downcase.gsub(" ", "_")
           end
-
           if part
             content = ""
-            content += part.snippets.before.map{|snippet| snippet.try(:body)}.join
+
+            part_snippets = part.snippets.before_or_after
+
+            content += part_snippets.map{|snippet| snippet.before_body == "t" && snippet.try(:body)}.join
             part_body = part.try(:body)
             content += part_body unless part_body.nil?
-            content += part.snippets.after.map{|snippet| snippet.try(:body)}.join
+            content += part_snippets.map{|snippet| snippet.before_body == "f" && snippet.try(:body)}.join
           end
         end
 

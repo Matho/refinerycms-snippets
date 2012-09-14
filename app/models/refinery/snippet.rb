@@ -22,6 +22,9 @@ module Refinery
 
     scope :before, where(:snippets_page_parts => {:before_body => true})
     scope :after, where(:snippets_page_parts => {:before_body => false})
+    scope :before_or_after, select('refinery_snippets.* , snippets_page_parts.before_body').includes(:translations).reorder('snippets_page_parts.page_part_id ASC, snippets_page_parts.position ASC')
+
+
 
     # rejects any page that has not been translated to the current locale.
     scope :translated, lambda {
