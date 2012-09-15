@@ -27,7 +27,7 @@ module Extensions
             part_body = part.try(:body)
 
             content += part_body unless part_body.nil?
-            content += part_snippets.select{|snippet| snippet.before_body == "t" }.map{|snippet| snippet.try(:body)}.join
+            content += part_snippets.select{|snippet| snippet.before_body == "f" }.map{|snippet| snippet.try(:body)}.join
 
           end
         end
