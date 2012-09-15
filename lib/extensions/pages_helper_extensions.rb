@@ -23,10 +23,12 @@ module Extensions
 
             part_snippets = part.snippets.before_or_after
 
-            content += part_snippets.map{|snippet| snippet.before_body == "t" && snippet.try(:body)}.join
+            content += part_snippets.select{|snippet| snippet.before_body == "t" }.map{|snippet| snippet.try(:body)}.join
             part_body = part.try(:body)
+
             content += part_body unless part_body.nil?
-            content += part_snippets.map{|snippet| snippet.before_body == "f" && snippet.try(:body)}.join
+            content += part_snippets.select{|snippet| snippet.before_body == "t" }.map{|snippet| snippet.try(:body)}.join
+
           end
         end
 
