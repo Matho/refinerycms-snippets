@@ -18,7 +18,7 @@ module Refinery
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = "refinery_snippets"
-          plugin.url = {:controller => '/refinery/admin/snippets'}
+          plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.admin_snippets_path }
           plugin.menu_match = /^\/?(admin|refinery)\/snippets/
           plugin.activity = [{
                                :class_name => :'refinery/snippet',
