@@ -2,6 +2,7 @@ cs:
   plugins:
     snippets:
       title: Výstřižky
+      tab_name: Výstřižky
   admin:
     snippets:
       actions:

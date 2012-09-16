@@ -3,6 +3,7 @@ en:
     plugins:
       refinery_snippets:
         title: Snippets
+        tab_name: Snippets
     admin:
       snippets:
         actions:

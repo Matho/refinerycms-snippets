@@ -3,6 +3,7 @@ sk:
     plugins:
       refinery_snippets:
         title: Útržky
+        tab_name: Útržky
     admin:
       snippets:
         actions:

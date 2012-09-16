@@ -42,7 +42,7 @@ module Refinery
       
       config.after_initialize do
         ::Refinery::Pages::Tab.register do |tab|
-          tab.name = "snippets"
+          tab.name = ::I18n.t(:'refinery.plugins.refinery_snippets.tab_name')
           tab.partial = "/refinery/admin/pages/tabs/snippets"
         end
 
