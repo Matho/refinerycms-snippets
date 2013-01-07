@@ -35,6 +35,11 @@ module Refinery
         translations[:locale].eq(Globalize.locale)).where(pages[:id].eq(translations[:snippet_id]))
     }
 
+    def deletable?
+      deletable === true
+    end
+
+
     def pages
       Refinery::Page.for_snippet(self)
     end
