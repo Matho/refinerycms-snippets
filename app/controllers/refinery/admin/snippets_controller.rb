@@ -5,7 +5,7 @@ module ::Refinery
       crudify :'refinery/snippet', :xhr_paging => true
 
       def create
-        if (@snippet = Refinery::Snippet.create(params[:snippet])).valid?
+        if (@snippet = Refinery::Snippet.create(snippet_params)).valid?
           (request.xhr? ? flash.now : flash).notice = t(
             'refinery.crudify.created',
             :what => "#{@snippet.title}"
@@ -33,6 +33,13 @@ module ::Refinery
           end
         end
       end
+
+      protected
+
+      def snippet_params
+        params.require(:snippet).permit(:title, :body, :position)
+      end
+
     end
   end
 end

@@ -20,24 +20,18 @@ module Refinery
           plugin.name = "refinery_snippets"
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.admin_snippets_path }
           plugin.menu_match = /^\/?(admin|refinery)\/snippets/
-          plugin.activity = [{
-                               :class_name => :'refinery/snippet',
-                               :url => "refinery.admin_snippet_path"
-                             }, {
-                               :class_name => :'refinery/snippet_page_part',
-                               :nested_with => ['snippet'],
-                               :url => "refinery.admin_snippet_snippets_page_part_path"
-                             }]
         end
       end
 
       config.to_prepare do
+
+
         Refinery::PagePart.module_eval do
           has_many :snippet_page_parts, :dependent => :destroy
-          has_many :snippets, :through => :snippet_page_parts, :order => 'position ASC'
+          has_many :snippets, :through => :snippet_page_parts
         end
         Refinery::Page.send :include, Extensions::Page
-        Refinery::PagesHelper.send :include, Extensions::PagesHelper
+        Refinery::Admin::PagesHelper.send :include, Extensions::PagesHelper
       end
       
       config.after_initialize do

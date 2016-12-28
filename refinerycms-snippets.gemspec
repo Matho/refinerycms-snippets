@@ -19,6 +19,6 @@ Gem::Specification.new do |s|
   s.test_files        = `git ls-files -- spec/*`.split("\n")
   
   # Runtime dependencies
-  s.add_dependency    'refinerycms-pages', '~> 2.0.0' 
+  s.add_dependency    'refinerycms-pages', '~> 3.0.0'
 
 end

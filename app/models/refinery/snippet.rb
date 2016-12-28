@@ -1,15 +1,11 @@
 module Refinery
   class Snippet < ActiveRecord::Base
-
-    acts_as_indexed :fields => [:title, :body]
-
     validates :title, :presence => true, :uniqueness => true
 
     translates :body
     class Translation
-      attr_accessible :locale
+
     end
-    attr_accessible :title, :body, :position
 
 
     has_many :snippet_page_parts, :dependent => :destroy
@@ -20,9 +16,9 @@ module Refinery
       joins(:page_parts => :page).where(:refinery_pages => {:id => page.id})
     }
 
-    scope :before, where(:snippets_page_parts => {:before_body => true})
-    scope :after, where(:snippets_page_parts => {:before_body => false})
-    scope :before_or_after, select('refinery_snippets.* , snippets_page_parts.before_body').includes(:translations).reorder('snippets_page_parts.page_part_id ASC, snippets_page_parts.position ASC')
+    scope :before, -> { where(:snippets_page_parts => {:before_body => true}) }
+    scope :after, -> { where(:snippets_page_parts => {:before_body => false}) }
+    scope :before_or_after, -> { select('refinery_snippets.* , snippets_page_parts.before_body').includes(:translations).reorder('snippets_page_parts.page_part_id ASC, snippets_page_parts.position ASC') }
 
 
 
